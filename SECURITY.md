@@ -1,43 +1,26 @@
-# Security Policy
+# Security Policy — Kushmanmb/gem-ios
 
-Gem Wallet takes the security and privacy of our users' data very seriously. This document outlines our security policies and procedures for handling sensitive information.
+This repository is an independently maintained fork of [Gem Wallet's archived iOS repository](https://github.com/gemwalletcom/gem-ios). Official Gem Wallet development moved to [gemwalletcom/wallet](https://github.com/gemwalletcom/wallet). Security claims, third-party audits, and support contacts for the official application must not be assumed to cover this fork.
 
-**Reporting Security Issues**
+## Reporting a vulnerability
 
-If you discover a vulnerability or have concerns about the security of Gem Wallet, please report it to us at [security@gemwallet.com](mailto:security@gemwallet.com). We take all reports seriously and will respond promptly to acknowledge receipt of your report. Please include as much detail as possible, including:
+Do **not** submit seed phrases, private keys, API secrets, wallet recovery material, or live customer data in issues, PRs, screenshots, or logs.
 
-* A description of the issue
-* Steps to reproduce the issue (if applicable)
-* Any relevant screenshots or logs
+If GitHub private vulnerability reporting is enabled on this repository, use **Security → Advisories → Report a vulnerability** to contact this fork's maintainers confidentially. Otherwise contact the repository owner privately before disclosing reproducible exploit details; do not open a public issue containing an exploitable proof of concept.
 
-**Security Measures**
+Vulnerabilities in the official Gem Wallet product should be reported through [the upstream security policy](https://github.com/gemwalletcom/wallet/security/policy), not assumed to be handled by this fork.
 
-Gem Wallet has implemented various security measures to protect our users' data, including:
+Please include the affected commit, dependency or code path, impact, reproduction steps using disposable test wallets, and a suggested remediation where available. Never include real wallet secrets.
 
-* **Encryption**: All user data is encrypted using industry-standard algorithms and keys.
-* **Access Control**: Access to sensitive information is restricted to authorized personnel only.
-* **Vulnerability Scanning**: Our systems are regularly scanned for vulnerabilities by third-party security firms.
+## Review scope
 
-**Security Team**
+Priority areas include key generation and storage; seed phrase import/export and recovery; biometric access; transaction signing and chain-ID validation; WalletConnect requests; deep links; RPC and network trust boundaries; third-party dependencies; and the pinned Rust `core` submodule.
 
-Gem Wallet has a dedicated security team responsible for:
+## Automated checks and limitations
 
-* **Vulnerability Management**: Identifying, prioritizing, and remediating vulnerabilities in our systems and applications.
-* **Incident Response**: Responding to and resolving security incidents in a timely and effective manner.
-* **Compliance**: Ensuring that Gem Wallet's security practices comply with relevant regulations and industry standards.
+- macOS CI builds and runs iOS unit tests on the default branch.
+- MobSF static analysis checks Swift and Objective-C source patterns.
+- OSV-Scanner checks recursive Swift dependency lockfiles and the checked-out Rust submodule on PRs and on a scheduled full scan.
+- Dependabot proposes updates for GitHub Actions, the git submodule, and nested Swift packages.
 
-**Security Contact Information**
-
-If you have any questions or concerns about the security of Gem Wallet, please contact us at [security@gemwallet.com](mailto:security@gemwallet.com).
-
-**Acknowledgments**
-
-Gem Wallet acknowledges the following:
-
-* **OWASP**: We follow the guidelines and best practices outlined in the Open Web Application Security Project (OWASP) Security Cheat Sheet.
-* **NIST**: We comply with the security guidelines and standards published by the National Institute of Standards and Technology (NIST).
-* **PCI-DSS**: We comply with the Payment Card Industry Data Security Standard (PCI-DSS) for handling credit card information.
-
-**Disclaimer**
-
-Gem Wallet is not responsible for any damages or losses resulting from the use of our services. By using Gem Wallet, you acknowledge that you have read and understood this security policy.
+These automated checks do **not** constitute an independent cryptographic audit, guarantee zero vulnerabilities, or certify production readiness. Security findings require investigation and testing before shipping any wallet build.
