@@ -2,9 +2,12 @@ name: Unit Tests
 
 on:
   push:
-    branches: ["main"]
+    branches: ["kushmanmb"]
   pull_request: 
-    branches: ["main"]
+    branches: ["kushmanmb"]
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

@@ -1,0 +1,19 @@
+name: OSV Dependency PR Scan
+
+on:
+  pull_request:
+    branches: ["kushmanmb"]
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  scan-new-vulnerabilities:
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+    with:
+      checkout-submodules: true
+      scan-args: |
+        --recursive
+        ./

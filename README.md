@@ -1,8 +1,11 @@
 # 💎 Gem Wallet - iOS
 
-[![Unit Tests](https://github.com/kushmanmb-org/gem-ios/actions/workflows/ci.yml/badge.svg)](https://github.com/kushmanmb-org/gem-ios/actions/workflows/ci.yml)
-[![License](https://badgen.net/github/license/kushmanmb-org/gem-ios)](https://github.com/kushmanmb-org/gem-ios/blob/main/LICENSE)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/kushmanmb-org/gem-ios)
+> [!IMPORTANT]
+> This is an independently maintained fork of the [archived Gem Wallet iOS repository](https://github.com/gemwalletcom/gem-ios). The official project moved to [gemwalletcom/wallet](https://github.com/gemwalletcom/wallet). Changes in this fork are not automatically upstream releases or security fixes.
+
+[![Unit Tests](https://github.com/Kushmanmb/gem-ios/actions/workflows/ci.yml/badge.svg)](https://github.com/Kushmanmb/gem-ios/actions/workflows/ci.yml)
+[![License](https://badgen.net/github/license/Kushmanmb/gem-ios)](https://github.com/Kushmanmb/gem-ios/blob/kushmanmb/LICENSE)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Kushmanmb/gem-ios)
 [![Gem Wallet Discord](https://img.shields.io/discord/974531300394434630?style=plastic)](https://discord.gg/aWkq5sj7SY)
 [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/GemWalletApp)](https://x.com/GemWalletApp)
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/gemwallet_developers)
@@ -35,7 +38,7 @@ The app is developed using SwiftUI. The codebase also includes a [Core](https://
 
 ## 🏄‍♂️ Contributing
 
-- Look in to our [Github Issues](https://github.com/kushmanmb-org/gem-ios/issues)
+- Look in to our [Github Issues](https://github.com/Kushmanmb/gem-ios/issues)
 - See progress on our [Github Project Board](https://github.com/orgs/gemwalletcom/projects/2)
 - Public [Roadmap](https://github.com/orgs/gemwalletcom/projects/4)
 
@@ -50,8 +53,8 @@ See our [Contributing Guidelines](./CONTRIBUTING.md).
 ## 🙋 Getting Help
 
 - Join the [Telegram](https://t.me/gemwallet_developers) to get help, or
-- Open a [discussion](https://github.com/kushmanmb-org/gem-ios/discussions/new) with your question, or
-- Open an issue with [the bug](https://github.com/kushmanmb-org/gem-ios/issues/new)
+- Open a [discussion](https://github.com/Kushmanmb/gem-ios/discussions/new) with your question, or
+- Open an issue with [the bug](https://github.com/Kushmanmb/gem-ios/issues/new)
 
 If you want to contribute, you can use our [developers telegram](https://t.me/gemwallet_developers) to chat with us about further development!
 
@@ -63,17 +66,19 @@ If you want to contribute, you can use our [developers telegram](https://t.me/ge
 > Gem iOS needs [Apple silicon Mac](https://support.apple.com/en-us/116943) to build by default.
 
 1. Setup [Xcode](https://developer.apple.com/xcode)
-2. Clone the repo `git clone https://github.com/kushmanmb-org/gem-ios.git --recursive`
+2. Clone the repo `git clone https://github.com/Kushmanmb/gem-ios.git --recursive`
 3. Run `just bootstrap` to install all necessary tools. Make sure you have `just` installed `brew install just`. 
 
 If you're using a legacy Intel Mac, you need to pull latest `core` submodule and run `just generate-stone` to build `x86_64` arch Gemstone, the core library used by Gem iOS.
 
 ## 🔐 Security Scanning
 
+The fork also runs OSV dependency checks against the nested Swift Package Manager lockfiles and the Rust `core` submodule: a pull-request differential scan and a weekly full scan. Review failing checks before treating a build as safe.
+
 We run [MobSF mobsfscan](https://github.com/MobSF/mobsfscan) to catch insecure patterns in Swift and Objective-C code.
 
 - **Local usage**: Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and run `uv tool install mobsfscan` once. After that, `just mobsfscan` (internally `uv tool run mobsfscan -- --type ios --config .mobsf --exit-warning`) scans the iOS source tree with the repo-wide `.mobsf` configuration and fails when it encounters `WARNING` or `ERROR` level findings.
-- **CI enforcement**: `.github/workflows/mobsfscan.yml` installs mobsfscan on every push/PR to `main`, uploads a SARIF report to GitHub code scanning, and fails the workflow when findings remain.
+- **CI enforcement**: `.github/workflows/mobsfscan.yml` installs mobsfscan on every push/PR to `kushmanmb`, uploads a SARIF report to GitHub code scanning, and fails the workflow when findings remain.
 
 Suppress individual findings only when you fully understand the risk—either update the code or add a `// mobsf-ignore: rule_id` inline comment with context.
 
