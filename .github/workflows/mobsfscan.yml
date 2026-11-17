@@ -2,9 +2,9 @@ name: MobSF Scan
 
 on:
   push:
-    branches: ["main"]
+    branches: ["kushmanmb"]
   pull_request:
-    branches: ["main"]
+    branches: ["kushmanmb"]
 
 permissions:
   contents: read
