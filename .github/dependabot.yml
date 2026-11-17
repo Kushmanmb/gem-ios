@@ -1,12 +1,21 @@
 version: 2
-enable-beta-ecosystems: true
 updates:
-  - package-ecosystem: "gitsubmodule"
-    directory: "/core"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: "swift"
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+
+  - package-ecosystem: "swift"
+    directories:
+      - "/Features/*"
+      - "/Packages/*"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
