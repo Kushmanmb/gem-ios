@@ -1,0 +1,22 @@
+name: OSV Full Dependency Audit
+
+on:
+  push:
+    branches: ["kushmanmb"]
+  schedule:
+    - cron: "17 11 * * 1"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  scan-all-lockfiles:
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+    with:
+      checkout-submodules: true
+      scan-args: |
+        --recursive
+        ./
